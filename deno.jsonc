@@ -1,0 +1,14 @@
+{
+  "importMap": "import_map.json",
+  "tasks": {
+    "dev": "deno run --watch --allow-net --allow-read --allow-write main.ts"
+  },
+  "fmt": {
+    "singleQuote": true,
+    "lineWidth": 80,
+    "semiColons": true,
+    "useTabs": false,
+    "indentWidth": 2,
+    "proseWrap": "always"
+  }
+}
