@@ -11,10 +11,10 @@
   <img src="https://img.shields.io/github/languages/top/gabrielmaialva33/bodybook-api?style=flat&logo=appveyor" alt="GitHub top language" >
   <img src="https://img.shields.io/github/languages/count/gabrielmaialva33/bodybook-api?style=flat&logo=appveyor" alt="GitHub language count" >
   <img src="https://img.shields.io/github/repo-size/gabrielmaialva33/bodybook-api?style=flat&logo=appveyor" alt="Repository size" >
-  <img src="https://img.shields.io/github/license/gabrielmaialva33/bodybook-api?color=00b8d3?style=flat&logo=appveyor" alt="License" /> 
+  <img src="https://img.shields.io/github/license/gabrielmaialva33/bodybook-api?color=00b8d3?style=flat&logo=appveyor" alt="License" />
   <a href="https://github.com/gabrielmaialva33/bodybook-api/commits/master">
     <img src="https://img.shields.io/github/last-commit/gabrielmaialva33/bodybook-api?style=flat&logo=appveyor" alt="GitHub last commit" >
-    <img src="https://img.shields.io/badge/made%20by-Maia-15c3d6?style=flat&logo=appveyor" alt="Maia" >  
+    <img src="https://img.shields.io/badge/made%20by-Maia-15c3d6?style=flat&logo=appveyor" alt="Maia" >
   </a>
 </p>
 
@@ -31,8 +31,9 @@
 
 ## :bookmark: About
 
-**BodyBook API** is a REST API for the [BodyBook](bodybook.app) application, which is a social network for
-fitness enthusiasts, where you can create events, share your workouts, follow other users and much more.
+**BodyBook API** is a REST API for the [BodyBook](bodybook.app) application,
+which is a social network for fitness enthusiasts, where you can create events,
+share your workouts, follow other users and much more.
 
 <br>
 
@@ -85,7 +86,7 @@ file `bodybook-api.yaml` in root directory
 ### :writing_hand: **Author**
 
 | [![Maia](https://avatars.githubusercontent.com/u/26732067?size=100)](https://github.com/gabrielmaialva33) |
-|-----------------------------------------------------------------------------------------------------------|
+| --------------------------------------------------------------------------------------------------------- |
 | [Maia](https://github.com/gabrielmaialva33)                                                               |
 
 ## License
