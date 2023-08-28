@@ -1,6 +1,9 @@
 {
   "imports": {
+    "std/": "https://deno.land/std@0.200.0/",
     "hono": "https://deno.land/x/hono@v3.5.4/mod.ts",
-    "hono/middleware": "https://deno.land/x/hono@v3.5.4/middleware.ts"
+    "hono/middleware": "https://deno.land/x/hono@v3.5.4/middleware.ts",
+    "zod": "https://deno.land/x/zod@v3.22.2/mod.ts",
+    "kysely": "https://esm.sh/v131/kysely@0.26.3"
   }
 }

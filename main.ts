@@ -1,3 +1,6 @@
-import app from './app.ts';
+import 'std/dotenv/load.ts';
 
-Deno.serve({ port: 3000 }, app.fetch);
+import app from './src/app.ts';
+import { Env } from './src/lib/config/index.ts';
+
+Deno.serve({ hostname: Env.app.host, port: Env.app.port }, app.fetch);
