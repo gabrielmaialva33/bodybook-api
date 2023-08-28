@@ -2,7 +2,7 @@
   <br>
   <img src="https://raw.githubusercontent.com/gabrielmaialva33/bodybook-api/master/.github/assets/atlas.png" alt="BookBook" width="200">
   <br>
-  BodyBook is a pocket book for fitness enthusiasts 🏋️‍♂️
+  BodyBook is a pocket book for fitness enthusiasts 🏋️‍♂️ powered by <a href="https://deno.com/">Deno</a> 🦕
   <br>
 </h1>
 
