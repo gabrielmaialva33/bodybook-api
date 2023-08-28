@@ -50,8 +50,8 @@ fitness enthusiasts, where you can create events, share your workouts, follow ot
 git clone https://github.com/gabrielmaialva33/bodybook-api.git
 # enter the directory
 cd bodybook-api
-# install the dependencies
-deno cache
+# cache the dependencies
+deno cache --unstable deps.ts
 # run the application
 deno run --allow-net --allow-read --allow-write --allow-env --unstable src/server.ts
 ```
