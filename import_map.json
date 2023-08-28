@@ -1,5 +1,6 @@
 {
   "imports": {
-    "hono": "https://deno.land/x/hono@v3.5.4/mod.ts"
+    "hono": "https://deno.land/x/hono@v3.5.4/mod.ts",
+    "hono/middleware": "https://deno.land/x/hono@v3.5.4/middleware.ts"
   }
 }
