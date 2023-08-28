@@ -1,7 +1,11 @@
 {
   "importMap": "import_map.json",
   "tasks": {
-    "dev": "deno run --watch --allow-net --allow-read --allow-write main.ts"
+    "dev": "deno run --watch --allow-net --allow-read --allow-write main.ts",
+    "migration:up": "deno run -A --unstable https://deno.land/x/nessie/cli.ts migrate",
+    "migration:down": "deno run -A --unstable https://deno.land/x/nessie/cli.ts rollback all",
+    "migration:make": "deno run -A --unstable https://deno.land/x/nessie/cli.ts make:migration",
+    "migration:status": "deno run -A --unstable https://deno.land/x/nessie/cli.ts status"
   },
   "fmt": {
     "singleQuote": true,
