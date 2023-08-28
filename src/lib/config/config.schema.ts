@@ -13,6 +13,8 @@ const DatabaseConfigSchema = z.object({
   PG_USER: z.string().default('postgres'),
   PG_PASSWORD: z.string().default('postgres'),
   PG_DB: z.string().default('bodybook'),
+  PG_POOL_SIZE: z.coerce.number().default(10),
+  PG_LAZY_POOL: z.coerce.boolean().default(true),
 });
 
 export const ConfigSchema = AppConfigSchema.merge(DatabaseConfigSchema)
@@ -22,13 +24,15 @@ export const ConfigSchema = AppConfigSchema.merge(DatabaseConfigSchema)
       host: data.APP_HOST,
       port: data.APP_PORT,
     },
-    database: {
+    db: {
       url: data.PG_URL,
       host: data.PG_HOST,
       port: data.PG_PORT,
       user: data.PG_USER,
       password: data.PG_PASSWORD,
       db: data.PG_DB,
+      poolSize: data.PG_POOL_SIZE,
+      lazyPool: data.PG_LAZY_POOL,
     },
   }));
 
