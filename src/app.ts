@@ -2,8 +2,7 @@ import { Hono } from 'hono';
 import { compress, cors, logger, prettyJSON } from 'hono/middleware';
 import { UserRepository } from './modules/accounts/repositories/user.repository.ts';
 
-import { DatabaseService } from './lib/database/index.ts';
-import { Env } from './lib/config/index.ts';
+import './lib/database/database.ts';
 
 const app = new Hono();
 
@@ -12,21 +11,21 @@ app.use(logger());
 app.use(prettyJSON());
 app.use(compress());
 
-const db = DatabaseService.init(Env);
 app.get('/', async (c) => {
-  const userRepo = new UserRepository(db);
-  const user = await userRepo.findOrCreate({
+  const userRepo = new UserRepository();
+
+  const user = await userRepo.create({
     first_name: 'John',
     last_name: 'Doe',
     email: 'john@email.com',
     username: 'johndoe',
-    avatar_url: 'https://www.google.com',
+    password_hash: '123456',
   });
 
   console.log(user);
 
-  const users = await userRepo.list();
-  return c.json(users);
+  // const users = await userRepo.list();
+  return c.json(user);
 });
 
 export default app;

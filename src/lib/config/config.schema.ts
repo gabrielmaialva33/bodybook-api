@@ -30,7 +30,7 @@ export const ConfigSchema = AppConfigSchema.merge(DatabaseConfigSchema)
       port: data.PG_PORT,
       user: data.PG_USER,
       password: data.PG_PASSWORD,
-      db: data.PG_DB,
+      name: data.PG_DB,
       poolSize: data.PG_POOL_SIZE,
       lazyPool: data.PG_LAZY_POOL,
     },

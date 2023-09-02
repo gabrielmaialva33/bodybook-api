@@ -1,25 +1,6 @@
-import { ColumnType, Insertable, Selectable, Updateable } from 'kysely';
 import { z } from 'zod';
 
-import { BaseTable } from '../../../lib/database/index.ts';
-import { Generated } from 'https://esm.sh/v131/kysely@0.26.3/dist/cjs/util/column-type.d.ts';
-
 export const USER_TABLE = 'users';
-
-export interface UserTable extends BaseTable {
-  first_name: ColumnType<string>;
-  last_name: ColumnType<string>;
-  full_name: Generated<string>;
-  email: ColumnType<string>;
-  username: ColumnType<string>;
-  password_hash: ColumnType<string>;
-  avatar_url: ColumnType<string, string | undefined, null>;
-  is_email_verified: ColumnType<boolean, boolean, boolean>;
-}
-
-export type User = Selectable<UserTable>;
-export type NewUser = Insertable<UserTable>;
-export type UserUpdate = Updateable<UserTable>;
 
 export const UserSchema = z.object({
   id: z.number(),
