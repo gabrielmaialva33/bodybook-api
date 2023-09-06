@@ -1,19 +1,18 @@
-import { BaseModel } from '../../../lib/database/base.model.ts';
+import { BaseModel } from '../../../lib/database/index.ts';
 
 export class UserModel extends BaseModel {
-  public static tableName = 'users';
+  static tableName = 'users';
 
-  public id?: string | null;
-  public first_name!: string;
-  public last_name!: string;
-  public full_name?: string | null;
-  public email!: string;
-  public username!: string;
-  public password_hash!: string;
-  public avatar_url?: string;
-  public is_email_verified?: boolean;
-  public is_deleted?: boolean;
-  public created_at?: Date;
-  public updated_at?: Date;
-  public deleted_at?: Date | null;
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  username: string;
+  password_hash: string;
+  avatar_url: string;
+  is_email_verified: boolean;
+  is_deleted: boolean;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at: Date;
 }

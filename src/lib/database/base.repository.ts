@@ -1,35 +1,43 @@
-import { Model, ModelAttributes } from './base.model.ts';
-import { BaseModel, IBaseRepository } from './index.ts';
+import { type Client, type Transaction, TransactionError } from 'postgres';
+import { QueryArguments } from 'https://deno.land/x/postgres@v0.17.0/query/query.ts';
 
-export abstract class BaseRepository<T extends BaseModel>
-  implements IBaseRepository<T> {
-  private model: Model;
+import client from './database.ts';
+import Log from '../logger/log.ts';
+import { Model } from './index.ts';
 
-  constructor(m: Model) {
-    this.model = m;
+export abstract class BaseRepository<T extends Model> {
+  protected db: Client;
+  protected tableName: string;
+  protected transaction: Transaction;
+
+  constructor(
+    protected model: T,
+  ) {
+    this.db = client;
+    this.tableName = this.model.tableName;
+    this.transaction = this.db.createTransaction(`transaction-${Date.now()}`);
   }
 
-  public async create(payload: ModelAttributes<T>): Promise<T> {
-    console.log('model', this.model);
-    console.log('payload', payload);
-    console.log('table', this.model);
-    console.log(
-      `INSERT INTO ${this.model.table} (${
-        Object.keys(payload).join(', ')
-      }) VALUES (${
-        Object.keys(payload).map((_, index) => '$' + (index + 1)).join(', ')
-      }) RETURNING *`,
-    );
+  async query(query: string, args?: QueryArguments | undefined) {
+    Log.info(this.prettyQuery(query, args));
 
-    const result = await this.model.db.queryObject(
-      `INSERT INTO ${this.model.table} (${
-        Object.keys(payload).join(', ')
-      }) VALUES (${
-        Object.keys(payload).map((_, index) => '$' + (index + 1)).join(', ')
-      }) RETURNING *`,
-      Object.values(payload),
-    );
+    await this.transaction.begin();
+    try {
+      const result = await this.transaction.queryObject<T>(query, args);
+      await this.transaction.commit();
+      return result.rows;
+    } catch (error) {
+      if (error instanceof TransactionError) {
+        Log.error(error.cause);
+      } else {
+        throw error;
+      }
+    }
+  }
 
-    return result.rows[0] as T;
+  private prettyQuery(query: string, args?: QueryArguments | undefined) {
+    const formattedQuery = query.replace(/\s+/g, ' ').trim();
+    const formattedArgs = args ? JSON.stringify(args) : '';
+    return `${formattedQuery} ${formattedArgs}`;
   }
 }

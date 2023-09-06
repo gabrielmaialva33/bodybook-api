@@ -10,8 +10,6 @@ const client = new Client({
   password: Env.db.password,
 });
 
-await client.connect().then(() => Log.info('Database connected')).catch((err) =>
-  Log.error(err)
-);
+await client.connect().finally(() => Log.info('Database connected'));
 
 export default client;

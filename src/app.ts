@@ -19,13 +19,12 @@ app.get('/', async (c) => {
     last_name: 'Doe',
     email: 'john@email.com',
     username: 'johndoe',
+    avatar_url:
+      'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
     password_hash: '123456',
   });
 
-  console.log(user);
-
-  // const users = await userRepo.list();
-  return c.json(user);
+  return c.json({ user });
 });
 
 export default app;

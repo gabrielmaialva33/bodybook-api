@@ -1,7 +1,12 @@
 {
+  "compilerOptions": {
+    "strictPropertyInitialization": false
+  },
   "importMap": "import_map.json",
   "tasks": {
     "dev": "deno run --watch --allow-net --allow-read --allow-write --allow-env main.ts",
+    "build": "deno compile --allow-net --allow-read --allow-write --allow-env --unstable --output dist/main main.ts",
+    "start": "deno run --allow-net --allow-read --allow-write --allow-env main.ts",
     "migration:up": "deno run -A --unstable https://deno.land/x/nessie/cli.ts migrate",
     "migration:down": "deno run -A --unstable https://deno.land/x/nessie/cli.ts rollback all",
     "migration:make": "deno run -A --unstable https://deno.land/x/nessie/cli.ts make:migration",
